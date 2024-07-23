@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "/opt/homebrew/opt/llvm/bin/clang++",
+            "args": [
+                "-std=c++17",
+                "-fopenmp",
+                "-I/opt/homebrew/Cellar/raylib/5.0/include",
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/body.cpp",
+                "${workspaceFolder}/graphics.cpp",
+                "${workspaceFolder}/system.cpp",
+                "${workspaceFolder}/bodymanager.cpp",
+                "-L/opt/homebrew/Cellar/raylib/5.0/lib",
+                "-lraylib",
+                "-o",
+                "main"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Generated task by the user."
+        }
+    ]
+}

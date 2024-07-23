@@ -145,6 +145,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="body_settings.cpp" />
     <ClCompile Include="system.cpp" />
+    <ClCompile Include="bodymanager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -153,6 +154,7 @@
     <ClInclude Include="body.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="system.h" />
+    <ClInclude Include="bodymanager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
