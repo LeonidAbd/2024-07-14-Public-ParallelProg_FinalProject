@@ -1,7 +1,10 @@
 #include "bodymanager.h"
 #include <random>
 #include <cmath>
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include <iostream>
+#include <string>
 
 const double CENTRAL_BODY_MASS = 1e6;
 const double GRAVITY_CONSTANT = 1.0;
