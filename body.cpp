@@ -56,17 +56,16 @@ Body::Body(double mass, double coordinate[2], double velocity[2]) : Body()
 
 void Body::update_acceleration(vector<Body> bodies, double delta_t, double G)
 {
-    // if the acceleration is initialized already, you don't have to run this function
     for (int i = 0; i < 2; i++)
     {
         this->acceleration[i] = 0;
         for (Body body : bodies)
         {
             if (body.id == this->id)
-                continue; // the body does not have a force on itself
+                continue;
             double r_i = pythagoras(body.coordinate, this->coordinate);
-            this->acceleration[i] += G * body.mass *
-                                     (body.coordinate[i] - this->coordinate[i]) / r_i / r_i / r_i; // F = G * M * m / |r|^3 * r // a
+            // F = G * M * m / |r|^3 * r // a
+            this->acceleration[i] += G * body.mass * (body.coordinate[i] - this->coordinate[i]) / r_i / r_i / r_i;
         }
     }
 }
@@ -91,10 +90,10 @@ void Body::update_acceleration_next(vector<Body> bodies, double delta_t, double 
         for (Body body : bodies)
         {
             if (body.id == this->id)
-                continue; // the body does not have a force on itself
+                continue;
             double r_i = pythagoras(body.coordinate_next, this->coordinate_next);
-            this->acceleration_next[i] += G * body.mass *
-                                          (body.coordinate_next[i] - this->coordinate_next[i]) / r_i / r_i / r_i; // F = G * M * m / |r|^3 * r // a
+            // F = G * M * m / |r|^3 * r // a
+            this->acceleration_next[i] += G * body.mass * (body.coordinate_next[i] - this->coordinate_next[i]) / r_i / r_i / r_i;
         }
     }
 }
