@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-std=c++17",
+                "-I/opt/homebrew/Cellar/raylib/5.0/include",
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/body.cpp",
+                "${workspaceFolder}/graphics.cpp",
+                "${workspaceFolder}/system.cpp",
+                "-L/opt/homebrew/Cellar/raylib/5.0/lib",
+                "-lraylib",
+                "-o",
+                "main"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Generated task by the user."
+        }
+    ]
+}
