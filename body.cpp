@@ -117,6 +117,7 @@ double Body::get_size() {
     return this->size;
 }
 
-void Body::set_size(double size) {
+Body Body::set_size(double size) {
     this->size = size;
+    return *this;
 }
