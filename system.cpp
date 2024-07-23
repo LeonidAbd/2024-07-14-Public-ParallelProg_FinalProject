@@ -1,4 +1,5 @@
 #include "system.h"
+#include <omp.h>
 
 System::System()
 {
@@ -17,11 +18,12 @@ System::System(double G, double delta_time, vector<Body> bodies)
     this->is_acceleration_initialized = false;
     this->time = 0;
 }
+
 void System::move()
 {
-    // if the acceleration is not initialized yet, we must do it here
     if (!this->is_acceleration_initialized)
     {
+#pragma omp parallel for
         for (int body_id = 0; body_id < this->bodies.size(); body_id++)
         {
             this->bodies[body_id].update_acceleration(this->bodies, this->delta_time, this->G);
@@ -31,17 +33,22 @@ void System::move()
     }
     else
     {
+#pragma omp parallel for
         for (int body_id = 0; body_id < this->bodies.size(); body_id++)
+        {
             this->bodies[body_id].update_coordinate_next(this->delta_time);
+        }
     }
+
+#pragma omp parallel for
     for (int body_id = 0; body_id < this->bodies.size(); body_id++)
     {
-        // we have to make a new cycle, because
-        // the acceleration_next needs all the bodies with updated coordinate_next
+
         this->bodies[body_id].update_acceleration_next(this->bodies, this->delta_time, this->G);
         this->bodies[body_id].update_velocity_next(this->delta_time);
         this->bodies[body_id].move();
     }
+
     this->time += this->delta_time;
 }
 
