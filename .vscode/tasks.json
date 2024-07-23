@@ -13,6 +13,7 @@
                 "${workspaceFolder}/body.cpp",
                 "${workspaceFolder}/graphics.cpp",
                 "${workspaceFolder}/system.cpp",
+                "${workspaceFolder}/bodymanager.cpp",
                 "-L/opt/homebrew/Cellar/raylib/5.0/lib",
                 "-lraylib",
                 "-o",
