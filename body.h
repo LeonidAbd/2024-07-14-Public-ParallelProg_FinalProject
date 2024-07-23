@@ -29,5 +29,5 @@ public:
     void move();
     double* get_coordinates();
     double get_size();
-    void set_size(double size);
+    Body set_size(double size);
 };

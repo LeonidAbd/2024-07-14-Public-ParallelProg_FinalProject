@@ -28,6 +28,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="bodymanager.cpp">
+    <ClCompile Include="body_settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
