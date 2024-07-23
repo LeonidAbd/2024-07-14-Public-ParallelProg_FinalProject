@@ -4,9 +4,10 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "clang++",
+            "command": "/opt/homebrew/opt/llvm/bin/clang++",
             "args": [
                 "-std=c++17",
+                "-fopenmp",
                 "-I/opt/homebrew/Cellar/raylib/5.0/include",
                 "${workspaceFolder}/main.cpp",
                 "${workspaceFolder}/body.cpp",
