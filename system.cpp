@@ -26,7 +26,7 @@ void System::move()
 #pragma omp parallel for
         for (int body_id = 0; body_id < this->bodies.size(); body_id++)
         {
-            this->bodies[body_id].update_acceleration(this->bodies, this->delta_time, this->G);
+            this->bodies[body_id].update_acceleration(&(this->bodies), this->delta_time, this->G);
             this->bodies[body_id].update_coordinate_next(this->delta_time);
         }
         this->is_acceleration_initialized = true;
@@ -44,7 +44,7 @@ void System::move()
     for (int body_id = 0; body_id < this->bodies.size(); body_id++)
     {
 
-        this->bodies[body_id].update_acceleration_next(this->bodies, this->delta_time, this->G);
+        this->bodies[body_id].update_acceleration_next(&(this->bodies), this->delta_time, this->G);
         this->bodies[body_id].update_velocity_next(this->delta_time);
         this->bodies[body_id].move();
     }

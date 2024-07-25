@@ -1,7 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include "system.h"
-#include "body_settings.cpp"
+#include "bodysettings.cpp"
 
 class Graphics {
 private:

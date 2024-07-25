@@ -54,12 +54,12 @@ Body::Body(double mass, double coordinate[2], double velocity[2]) : Body()
     this->velocity[1] = velocity[1];
 }
 
-void Body::update_acceleration(vector<Body> bodies, double delta_t, double G)
+void Body::update_acceleration(vector<Body> *bodies, double delta_t, double G)
 {
     for (int i = 0; i < 2; i++)
     {
         this->acceleration[i] = 0;
-        for (Body body : bodies)
+        for (Body body : *bodies)
         {
             if (body.id == this->id)
                 continue;
@@ -82,12 +82,12 @@ void Body::update_coordinate_next(double delta_t)
     }
 }
 
-void Body::update_acceleration_next(vector<Body> bodies, double delta_t, double G)
+void Body::update_acceleration_next(vector<Body> *bodies, double delta_t, double G)
 {
     for (int i = 0; i < 2; i++)
     {
         this->acceleration_next[i] = 0;
-        for (Body body : bodies)
+        for (Body body : *bodies)
         {
             if (body.id == this->id)
                 continue;

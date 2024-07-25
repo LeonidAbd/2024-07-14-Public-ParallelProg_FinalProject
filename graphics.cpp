@@ -2,6 +2,7 @@
 
 #include <string>
 #include <sstream>
+#include <omp.h>
 
 using namespace std;
 
@@ -65,8 +66,8 @@ void Graphics::mainloop()
         this->draw_text();
 
         // DrawCircle(100, 100, 2, WHITE);
-        for (Body_Setting body_info : this->bodies_settings)
-            DrawCircle(body_info.x, body_info.y, body_info.size, WHITE);
+        for (int i = 0; i < this->bodies_settings.size(); i++)
+            DrawCircle(this->bodies_settings[i].x, this->bodies_settings[i].y, this->bodies_settings[i].size, WHITE);
         EndDrawing();
         this->system.move();
         this->frames_time += GetFrameTime();
@@ -99,7 +100,21 @@ void Graphics::draw_text()
     DrawText(str_framerate_title.c_str(), 40, 90, 15, CLITERAL(Color){255, 255, 255, 159});
 
     string str_framerate = (stringstream("") << this->frame_rate).str();
-    DrawText(str_framerate.c_str(), 130, 90, 15, CLITERAL(Color){255, 255, 255, 159});
+    DrawText(str_framerate.c_str(), 170, 90, 15, CLITERAL(Color){255, 255, 255, 159});
+
+    string str_bodycount_title = "Bodies count:";
+    DrawText(str_bodycount_title.c_str(), 40, 110, 15, CLITERAL(Color){255, 255, 255, 159});
+
+    string str_bodycount = (stringstream("") << this->bodies_settings.size()).str();
+    DrawText(str_bodycount.c_str(), 170, 110, 15, CLITERAL(Color){255, 255, 255, 159});
+
+    string str_ompthreads_title = "Threads count:";
+    DrawText(str_ompthreads_title.c_str(), 40, 130, 15, CLITERAL(Color){255, 255, 255, 159});
+
+    string str_ompthreads = (stringstream("") << omp_get_max_threads()).str();
+    DrawText(str_ompthreads.c_str(), 170, 130, 15, CLITERAL(Color){255, 255, 255, 159});
+
+    DrawFPS(710, 10);
 }
 
 void Graphics::update_bodies_settings()

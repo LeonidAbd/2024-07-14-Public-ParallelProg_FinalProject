@@ -143,7 +143,7 @@
     <ClCompile Include="body.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="body_settings.cpp" />
+    <ClCompile Include="bodysettings.cpp" />
     <ClCompile Include="system.cpp" />
     <ClCompile Include="bodymanager.cpp" />
   </ItemGroup>
@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="body.h" />
     <ClInclude Include="graphics.h" />
+    <ClInclude Include="includes.h" />
     <ClInclude Include="system.h" />
     <ClInclude Include="bodymanager.h" />
   </ItemGroup>

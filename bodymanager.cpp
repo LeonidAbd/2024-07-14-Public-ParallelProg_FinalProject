@@ -1,3 +1,4 @@
+#include "includes.h"
 #include "bodymanager.h"
 #include <random>
 #include <cmath>
@@ -5,9 +6,6 @@
 #include <math.h>
 #include <iostream>
 #include <string>
-
-const double CENTRAL_BODY_MASS = 1e6;
-const double GRAVITY_CONSTANT = 1.0;
 
 vector<Body> BodyManager::generate_orbiting_bodies(int num_bodies, double central_mass)
 {
@@ -49,7 +47,7 @@ vector<Body> BodyManager::generate_orbiting_bodies(int num_bodies, double centra
 
 vector<Body> BodyManager::create_static_bodies()
 {
-    vector<Body> bodies;
+    vector<Body> bodies(0);
 
     Body body1(1000000.0, 400, 400, 0, 0);
     body1.set_size(5);

@@ -4,14 +4,19 @@
 #include "body.h"
 #include <random>
 #include "bodymanager.h"
+#include <omp.h>
 
 using namespace std;
 
-const double CENTRAL_BODY_MASS = 1e6;
-const double GRAVITY_CONSTANT = 1.0;
+#include "includes.h"
+
+void f(vector<int> array) {
+    array.push_back(0);
+}
 
 int main(int argc, char *argv[])
 {
+    omp_set_num_threads(NUM_THREADS);
     vector<Body> bodies = BodyManager::get_bodies(argc, argv);
 
     if (bodies.empty())
